@@ -1,0 +1,7 @@
+#Start recording tcl command: 8/10/2025 19:14:17
+#Project Location: C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice; Project name: GDP
+prj_project open "C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice/GDP.ldf"
+prj_src remove "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/fdc/wf1772ip_pkg.vhd"
+prj_project save
+prj_project close
+#Stop recording: 8/10/2025 19:20:41
