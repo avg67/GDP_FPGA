@@ -20,6 +20,18 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
       |dipswitches(7)|"4"   | EXT18|
      
      GPIO:
+      - PINS:
+      |Pin|FPGA-PIN|EXT|
+      |----------|--------|---|
+      |GPIO(0)|"15" | EXT10|
+      |GPIO(1)|"13" | EXT11|
+      |GPIO(2)|"12" | EXT12|
+      |GPIO(3)|"10" | EXT13|
+      |GPIO(4)|"9"  | EXT14|
+      |GPIO(5)|"7"  | EXT15|
+      |GPIO(6)|"6"  | EXT16|
+      |GPIO(7)|"5"  | EXT17|
+      
       -  Data-Register IO-Addresse:  0x04
       -  Data-Direction IO-Addresse: 0x05 (bit = 0 -> Eingabe; 1 -> Ausgabe)
  
