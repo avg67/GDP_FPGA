@@ -107,14 +107,14 @@ begin  -- beh
       SD_nCS_o    => SD_nCS,
       SD_MOSI_o   => SD_MOSI,
       SD_MISO_i   => SD_MOSI,
-      ETH_nCS_o   => ETH_nCS,
-      ETH_MOSI_o  => ETH_MOSI,
-      ETH_MISO_i  => ETH_MISO,
+      --ETH_nCS_o   => ETH_nCS,
+      --ETH_MOSI_o  => ETH_MOSI,
+      --ETH_MISO_i  => ETH_MISO,
 --      VDIP_SCK_o  => VDIP_SCK, 
 --      VDIP_CS_o   => VDIP_CS,  
 --      VDIP_MOSI_o => VDIP_MOSI,
 --      VDIP_MISO_i => '1', --VDIP_MISO,
-      GPIO_io     => gpio,
+      --GPIO_io     => gpio,
 
       SRAM1_ADR   => SRAM_addr_o,
       SRAM1_DB    => SRAM_DB,
@@ -123,7 +123,8 @@ begin  -- beh
       SRAM1_nWR   => SRAM_nWR,
       SRAM1_nOE   => SRAM_nOE,
       
-      glob_gdp_en_i => '1'
+      --glob_gdp_en_i => '1'
+      dipswitches_i => X"01"
 
       );
   ETH_MISO <= not ETH_MOSI and not ETH_nCS;
