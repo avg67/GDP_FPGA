@@ -46,6 +46,7 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
         |SD_pwr_on|"29" | EXT1|
         
         SD_pwr_on ist mit bit3 vom Control-register verbunden (bit = 1 -> Spannung für SD-Cards einschalten; 0 -> Aus)
+        Nur beim SDIO vorhanden, beim 68k-SPI ist es auerhaft auf 0!
         
         
  Schaltplan: https://github.com/avg67/GDP_FPGA/blob/main/schaltplan.pdf
