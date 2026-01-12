@@ -7,7 +7,12 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
 ## FPGA-Files:
 - GDP_FPGA_ext_DIP_everything.jed
    - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SPI, TIMER, GPIO) und 
-     externen DIP-Switches an folgenden PINS:
+     externen DIP-Switches für 68k
+- GDP_FPGA_ext_DIP_everything_SDIO.jed
+   - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SDIO, TIMER, GPIO) und 
+     externen DIP-Switches für Z80
+
+  Pins:
       |Dip switch|FPGA-PIN|EXT|
       |----------|--------|---|
       |dipswitches(0)|"134" | EXT25|
