@@ -32,6 +32,7 @@ vcom -93                  ../vhdl/rtl/Dffdecl-p.vhd \
                           ../../vhdl/rtl/Ser1.vhd \
                           ../../vhdl/rtl/SPI_Interface.vhd \
                           ../../vhdl/rtl/SPI_Vdip.vhd \
+                          ../../vhdl/rtl/SDIO_Interface.vhd \
                           ../../vhdl/rtl/Timer.vhd \
                           ../../vhdl/rtl/GPIO_Interface.vhd \
                           ../../vhdl/rtl/src/UART_pkg.vhd \
@@ -73,6 +74,7 @@ add wave -group {Mouse_PS2_IF} -noupdate -radix hex /dut/impl_mouse/mouse/PS2if/
 add wave -noupdate -divider
 #add wave -noupdate -divider SPI
 add wave -group {SPI} -noupdate -radix hex /dut/impl_spi/spi/*
+add wave -group {SDIO} -noupdate -radix hex /dut/impl_SDIO/sdio/*
 #add wave -noupdate -divider VDIP
 #add wave -group {VDIP} -noupdate -radix hex /dut/impl_vdip/vdip/*
 add wave -group {GPIO} -noupdate -radix hex /dut/impl_GPIO/GPIO/*

@@ -114,7 +114,7 @@ begin  -- beh
 --      VDIP_CS_o   => VDIP_CS,  
 --      VDIP_MOSI_o => VDIP_MOSI,
 --      VDIP_MISO_i => '1', --VDIP_MISO,
-      --GPIO_io     => gpio,
+      GPIO_io     => gpio,
 
       SRAM1_ADR   => SRAM_addr_o,
       SRAM1_DB    => SRAM_DB,
