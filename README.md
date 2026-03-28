@@ -11,6 +11,12 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
 - GDP_FPGA_ext_DIP_everything_SDIO.jed
    - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SDIO, TIMER, GPIO) und 
      externen DIP-Switches für Z80
+- GDP_FPGA_ext_DIP_everything_SDIO_I2C.jed
+   - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SDIO, TIMER, GPIO) und 
+     externen DIP-Switches für Z80
+     Weiters ist ein I2C-Master am PS2 Port der Maus angeschlossen. Diese wird ausgeschaltet wenn das I2C interface eingeschaltet wird.
+     
+     Dokumentation des I2C siehe https://github.com/avg67/nkc/blob/main/tang_nano_20k/doc/i2c.pdf
 
 - Pins:
    - DIP:
