@@ -7,7 +7,13 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
 ## FPGA-Files:
 - GDP_FPGA_ext_DIP_everything.jed
    - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SPI, TIMER, GPIO) und 
-     externen DIP-Switches an folgenden PINS:
+     externen DIP-Switches für 68k
+- GDP_FPGA_ext_DIP_everything_SDIO.jed
+   - GDP_FPGA mit allen Peripherals (GDP, KEY, MOUSE, SER1, SOUND, SDIO, TIMER, GPIO) und 
+     externen DIP-Switches für Z80
+
+- Pins:
+   - DIP:
       |Dip switch|FPGA-PIN|EXT|
       |----------|--------|---|
       |dipswitches(0)|"134" | EXT25|
@@ -19,23 +25,22 @@ Anschluss SD-Karte an GDP-FPGA: https://nkcforum.de/ndr/hardware/neu/mspeicher/s
       |dipswitches(6)|"141" | EXT19|
       |dipswitches(7)|"4"   | EXT18|
      
-     GPIO:
-      - PINS:
-        |Pin|FPGA-PIN|EXT|
-        |----------|--------|---|
-        |GPIO(7)|"15" | EXT10|
-        |GPIO(6)|"13" | EXT11|
-        |GPIO(5)|"12" | EXT12|
-        |GPIO(4)|"10" | EXT13|
-        |GPIO(3)|"9"  | EXT14|
-        |GPIO(2)|"7"  | EXT15|
-        |GPIO(2)|"6"  | EXT16|
-        |GPIO(0)|"5"  | EXT17|
+   - GPIO:
+      |Pin|FPGA-PIN|EXT|
+      |----------|--------|---|
+      |GPIO(7)|"15" | EXT10|
+      |GPIO(6)|"13" | EXT11|
+      |GPIO(5)|"12" | EXT12|
+      |GPIO(4)|"10" | EXT13|
+      |GPIO(3)|"9"  | EXT14|
+      |GPIO(2)|"7"  | EXT15|
+      |GPIO(2)|"6"  | EXT16|
+      |GPIO(0)|"5"  | EXT17|
       
-      -  Data-Register IO-Addresse:  0x04
-      -  Data-Direction IO-Addresse: 0x05 (bit = 0 -> Eingabe; 1 -> Ausgabe)
-      SPI / SDIO:
-      - PINS:
+      Data-Register IO-Addresse:  0x04
+      Data-Direction IO-Addresse: 0x05 (bit = 0 -> Eingabe; 1 -> Ausgabe)
+        
+    - SPI / SDIO:
         |Pin|FPGA-PIN|EXT|
         |----------|--------|---|
         |SD_SCK |"12" | EXT2|
