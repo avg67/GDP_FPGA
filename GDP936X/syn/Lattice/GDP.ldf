@@ -67,6 +67,9 @@
         <Source name="../../../vhdl/rtl/SPI_Vdip.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
+        <Source name="../../../vhdl/rtl/SDIO_Interface.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
         <Source name="../../../vhdl/rtl/PS2Keyboard.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
@@ -86,6 +89,18 @@
             <Options/>
         </Source>
         <Source name="../../vhdl/rtl/gdp_character.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../vhdl/rtl/i2c/i2c_master_top.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../vhdl/rtl/i2c/i2c_master_byte_ctrl.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../vhdl/rtl/i2c/i2c_master_bit_ctrl.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../vhdl/rtl/i2c/i2c_master-rtl-ea.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
         <Source name="../../../vhdl/rtl/GPIO_Interface.vhd" type="VHDL" type_short="VHDL">

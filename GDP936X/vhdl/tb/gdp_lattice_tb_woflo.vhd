@@ -533,7 +533,15 @@ begin  -- beh
 --    line(0,0,0,511);
 --    line(0,0,255,0);
 
-
+    write_bus(X"09",X"5A"); --I2C
+    Read_bus(X"09",read_data); --I2C
+    
+    read_bus(X"21",read_data); --SDIO
+    write_bus(X"21",X"CA"); --SDIO
+    write_bus(X"20",X"5A"); --SDIO
+    read_bus(X"21",read_data); --SDIO
+    
+    
     write_bus(X"61",X"08");  -- HSCROLL
     write_bus(X"A0",X"55"); -- fg
     write_bus(X"A1",X"AA"); -- bg    

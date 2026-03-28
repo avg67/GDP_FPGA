@@ -18,6 +18,7 @@
 --line released (HIGH). Make sure to bring the DATA line LOW before releasing the CLOCK line. 
 --Some time later (up to 10 milliseconds) the Mouse will start to generate clock signals. 
 --At each HIGH to LOW clock transition the Mouse will clock in a new bit.
+-- see https://isdaman.com/alsos/hardware/mouse/ps2interface.htm
 
 library IEEE;
 use IEEE.std_logic_1164.all;
@@ -34,9 +35,20 @@ entity PS2Mouse is
     --------------------------
     -- PS/2 clock line. Bidirectional (resolved!) for Inhibit bus state on
     -- PS/2 bus. In all other cases an input would be sufficient.
-    Ps2Clk_io    : inout std_logic;
-    -- PS/2 data line. Bidirectional for reading and writing data.
-    Ps2Dat_io    : inout std_logic;
+    --Ps2Clk_io    : inout std_logic;
+    ---- PS/2 data line. Bidirectional for reading and writing data.
+    --Ps2Dat_io    : inout std_logic;
+    --
+    -- PS/2 clock line. 
+    Ps2Clk_pad_i    : in  std_logic;
+    Ps2Clk_pad_o    : out std_logic;
+    Ps2Clk_padoen_o : out std_logic;
+    -- PS/2 data line. 
+    Ps2Dat_pad_i    : in  std_logic;
+    Ps2Dat_pad_o    : out std_logic;
+    Ps2Dat_padoen_o : out std_logic;
+    --
+    enable_i        : in std_ulogic;
     ----------------------------------
     -- Data Bus
     ----------------------------------
@@ -69,8 +81,13 @@ architecture rtl of PS2Mouse is
     port(
       reset_n_i    : in  std_ulogic;
       clk_i        : in  std_ulogic;
-      Ps2Clk_io    : inout std_logic;
-      Ps2Dat_io    : inout std_logic;
+      Ps2Clk_pad_i    : in  std_logic;
+      Ps2Clk_pad_o    : out std_logic;
+      Ps2Clk_padoen_o : out std_logic;
+      Ps2Dat_pad_i    : in  std_logic;
+      Ps2Dat_pad_o    : out std_logic;
+      Ps2Dat_padoen_o : out std_logic;
+      enable_i        : in std_ulogic;
       data_o       : out std_ulogic_vector(7 downto 0);
       data_stb_o   : out std_ulogic;
       ack_o        : out std_ulogic;
@@ -88,7 +105,7 @@ architecture rtl of PS2Mouse is
   type mouse_state_t  is (IDLE_e, RESET_MOUSE_e, READ_ID_e, INIT_e);
   type mouse_send_state_t  is (IDLE_e, WAIT_ACK_e);
   
-
+   constant trace_en_c : boolean :=false;
   ------------------------------
   -- Host to mouse commands
 
@@ -163,8 +180,15 @@ begin
       port map (
         reset_n_i   => reset_n_i,
         clk_i       => clk_i,    
-        Ps2Clk_io   => Ps2Clk_io,
-        Ps2Dat_io   => Ps2Dat_io,
+        --Ps2Clk_io   => Ps2Clk_io,
+        --Ps2Dat_io   => Ps2Dat_io,
+        Ps2Clk_pad_i    => Ps2Clk_pad_i,   
+        Ps2Clk_pad_o    => Ps2Clk_pad_o,   
+        Ps2Clk_padoen_o => Ps2Clk_padoen_o,
+        Ps2Dat_pad_i    => Ps2Dat_pad_i,   
+        Ps2Dat_pad_o    => Ps2Dat_pad_o,   
+        Ps2Dat_padoen_o => Ps2Dat_padoen_o,
+        enable_i        => enable_i,
         data_o      => DataReg(7 downto 0),
         data_stb_o  => DataReg(8),
         ack_o       => open,
@@ -338,6 +362,7 @@ begin
     signal down_reg,down_cnt   : unsigned(7 downto 0);
     signal right_reg,right_cnt : unsigned(7 downto 0);
     signal left_reg,left_cnt   : unsigned(7 downto 0);
+    signal mouse_trace         : std_ulogic_vector(8 downto 0);
 --    signal mouse_fsm           : std_ulogic_vector(1 downto 0);
 --    signal send_fsm            : std_ulogic;
   begin
@@ -353,7 +378,9 @@ begin
     
     
     with to_integer(unsigned(Adr_i(2 downto 0))) select
-      DataOut_o <=  key_stat                      when 3, -- 0x8B
+      DataOut_o <=  mouse_trace(7 downto 0)       when 0, -- 0x88
+                    "0000000" & mouse_trace(8)    when 1,
+                    key_stat                      when 3, -- 0x8B
                     std_ulogic_vector(down_reg)   when 4,
                     std_ulogic_vector(up_reg)     when 5,
                     std_ulogic_vector(right_reg)  when 6,
@@ -435,5 +462,21 @@ begin
       end if;
       
     end process;
+    trace: if trace_en_c generate
+      process (Clk_i, reset_n_i) is
+      begin
+         if reset_n_i = ResetActive_c then
+            mouse_trace <= (others => '0');
+         elsif Clk_i'event and Clk_i='1' then
+            if DataReg(8)='1' then
+               mouse_trace(7 downto 0) <= DataReg(7 downto 0);
+               mouse_trace(8)          <= not mouse_trace(8);
+            end if;
+         end if;
+      end process;
+   end generate;
+   no_trace: if not trace_en_c generate
+      mouse_trace <= (others => '0');
+   end generate;
   end block;
 end rtl;

@@ -33,6 +33,34 @@ prj_project open "C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice/GDP.ldf"
 
 
 
+<A name="pn260112192853"></A><B><U><big>pn260112192853</big></U></B>
+#Start recording tcl command: 1/10/2026 22:12:09
+#Project Location: C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice; Project name: GDP
+prj_project open "C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice/GDP.ldf"
+prj_run Synthesis -impl impl1 -task Synplify_Synthesis
+prj_run Export -impl impl1 -task Bitgen
+prj_run PAR -impl impl1 -task IOTiming
+prj_run Export -impl impl1 -task Bitgen -forceAll
+prj_run Export -impl impl1 -task Bitgen -forceAll
+prj_run Export -impl impl1 -task Bitgen
+prj_run Export -impl impl1 -task Bitgen -forceAll
+prj_run Export -impl impl1 -task Bitgen
+prj_src add "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/SDIO_Interface.vhd"
+prj_run Export -impl impl1 -task Bitgen
+#Stop recording: 1/12/2026 19:28:53
+
+
+
+<A name="pn260320192640"></A><B><U><big>pn260320192640</big></U></B>
+#Start recording tcl command: 3/20/2026 18:42:46
+#Project Location: C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice; Project name: GDP
+prj_project open "C:/working/_git_gdp_fpga/GDP_FPGA/GDP936X/syn/Lattice/GDP.ldf"
+prj_src add "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/i2c/i2c_master-rtl-ea.vhd" "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/i2c/i2c_master_bit_ctrl.vhd" "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/i2c/i2c_master_byte_ctrl.vhd" "C:/working/_git_gdp_fpga/GDP_FPGA/vhdl/rtl/i2c/i2c_master_top.vhd"
+prj_run Export -impl impl1 -task Bitgen -forceAll
+#Stop recording: 3/20/2026 19:26:40
+
+
+
 <BR>
 <BR>
 <BR>
